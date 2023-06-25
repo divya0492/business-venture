@@ -1,7 +1,11 @@
 #!/bin/bash
 
+curl -L -o /etc/yum.repos.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/devel:kubic:libcontainers:stable:cri-o:$VERSION.repo
+
 # Retrieve Git version
 git_version=$(git --version | awk '{print $3}')
+
+git_version=$(git --version | awk '{print $3}') 
 
 # Retrieve Apache version
 apache_version=$(httpd -v | awk -F'/' '/version/ {print $2}')
@@ -9,6 +13,6 @@ apache_version=$(httpd -v | awk -F'/' '/version/ {print $2}')
 # Create JSON output
 json_output="{\"git_version\": \"$git_version\", \"apache_version\": \"$apache_version\"}"
 
-# Display JSON output
+# view JSON output
 echo $json_output
 
