@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Retrieve Git version
+git_version=$(git --version | awk '{print $3}')
+
+# Retrieve Apache version
+apache_version=$(httpd -v | awk -F'/' '/version/ {print $2}')
+
+# Create JSON output
+json_output="{\"git_version\": \"$git_version\", \"apache_version\": \"$apache_version\"}"
+
+# Display JSON output
+echo $json_output
+
